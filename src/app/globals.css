@@ -1,0 +1,222 @@
+  @import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #06b6d4;
+  --secondary: #8b5cf6;
+  --dark-bg: #0a0f1d;
+  --dark-surface: #1e293b;
+  --text-light: #f8fafc;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(6, 182, 212, 0.3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--dark-bg);
+    --foreground: var(--text-light);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)];
+    font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    position: relative;
+    overflow-y: auto;
+  }
+}
+
+@layer utilities {
+  .grid-bg {
+    background-size: 60px 60px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-position: top center;
+  }
+  
+  .glow {
+    position: relative;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.05); }
+  }
+
+  .glow::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, var(--accent) 0%, rgba(6, 182, 212, 0) 65%);
+    filter: blur(60px);
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+  
+  .glow-purple::before {
+    background: radial-gradient(circle, var(--secondary) 0%, rgba(139, 92, 246, 0) 65%);
+    filter: blur(60px);
+    opacity: 0.3;
+  }
+  
+  .glass {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .glass::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+  }
+  
+  .text-gradient {
+    background: linear-gradient(to right, var(--accent), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .background-light {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent) 0%, rgba(6, 182, 212, 0) 70%);
+    filter: blur(80px);
+    opacity: 0.4;
+    pointer-events: none;
+    animation: pulse-glow 6s ease-in-out infinite;
+  }
+}
+
+/* Add background lights to the body */
+body::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent) 0%, rgba(6, 182, 212, 0) 70%);
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  transform: translate(50%, 50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent) 0%, rgba(6, 182, 212, 0) 70%);
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+/* Add unified section styling with enhanced background */
+.section-bg {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.section-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: top center;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Add background lights for all sections */
+.section-bg::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent) 0%, rgba(6, 182, 212, 0) 70%);
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: pulse-glow 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Position variations for light effects */
+.section-bg.light-top-right::after {
+  top: 10%;
+  right: 10%;
+}
+
+.section-bg.light-top-left::after {
+  top: 10%;
+  left: 10%;
+}
+
+.section-bg.light-bottom-right::after {
+  bottom: 10%;
+  right: 10%;
+}
+
+.section-bg.light-bottom-left::after {
+  bottom: 10%;
+  left: 10%;
+}
+
+.section-bg.light-center::after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Purple light variation */
+.section-bg.light-purple::after {
+  background: radial-gradient(circle, var(--secondary) 0%, rgba(139, 92, 246, 0) 70%);
+}
+
+/* Main content wrapper for each section */
+.section-content {
+  position: relative;
+  z-index: 2;
+}
