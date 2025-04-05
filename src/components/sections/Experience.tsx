@@ -190,7 +190,7 @@ export default function Experience() {
     <section 
       id="experience" 
       ref={containerRef}
-      className="py-20 md:py-32 section-bg light-top-left relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-32 section-bg light-top-left relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -222,14 +222,14 @@ export default function Experience() {
         )}
       </div>
 
-      <div className="section-content container mx-auto px-6 relative z-10">
-        <div className="mb-12 md:mb-16 text-center">
+      <div className="section-content container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-10 sm:mb-12 md:mb-16 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
           >
             Professional <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 inline-block text-transparent bg-clip-text">Timeline</span>
           </motion.h2>
@@ -246,52 +246,52 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-3xl mx-auto text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed mb-4"
+            className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed mb-4"
           >
             A journey of continuous growth in quality engineering and test automation excellence, 
             delivering measurable impact at leading organizations.
           </motion.p>
         </div>
         
-        {/* Filter tabs */}
+        {/* Filter tabs - Scrollable on small screens */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex justify-center gap-4 mb-12"
+          className="flex flex-nowrap justify-start sm:justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 overflow-x-auto pb-3 sm:pb-0 hide-scrollbar"
         >
           <button 
             onClick={() => setFilterActive("work")}
-            className={`px-5 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium transition-all duration-300 ${ 
+            className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${ 
               filterActive === "work" 
                 ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/20" 
                 : "glass hover:bg-white/5 hover:text-cyan-400"
             }`}
           >
-            <FaBriefcase className="h-4 w-4" />
-            Professional Experience
+            <FaBriefcase className="h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="hidden xs:inline">Professional</span> Experience
           </button>
           <button 
             onClick={() => setFilterActive("education")}
-            className={`px-5 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium transition-all duration-300 ${ 
+            className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${ 
               filterActive === "education" 
                 ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/20" 
                 : "glass hover:bg-white/5 hover:text-cyan-400"
             }`}
           >
-            <FaGraduationCap className="h-4 w-4" />
-            Academic Background
+            <FaGraduationCap className="h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="hidden xs:inline">Academic</span> Background
           </button>
           <button 
             onClick={() => setFilterActive("All")}
-            className={`px-5 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium transition-all duration-300 ${ 
+            className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${ 
               filterActive === "All" 
                 ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/20" 
                 : "glass hover:bg-white/5 hover:text-cyan-400"
             }`}
           >
-            <FaCheckCircle className="h-4 w-4" />
+            <FaCheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
             Show All
           </button>
         </motion.div>
@@ -306,7 +306,7 @@ export default function Experience() {
             exit="hidden"
             className="relative max-w-5xl mx-auto"
           >
-            {/* Central line for timeline */}
+            {/* Central line for timeline - visible only on large screens */}
             <div className="absolute hidden lg:block left-1/2 top-0 h-full w-0.5 bg-gradient-to-b from-cyan-400/30 via-blue-500/20 to-purple-600/10" />
             
             {/* Experience items */}
@@ -319,11 +319,11 @@ export default function Experience() {
                 <motion.div 
                   key={expId}
                   variants={itemVariants}
-                  className={`relative flex flex-col lg:flex-row items-stretch mb-10 ${
+                  className={`relative flex flex-col lg:flex-row items-stretch mb-6 sm:mb-10 ${
                     isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
                   }`}
                 >
-                  {/* Timeline node */}
+                  {/* Timeline node - only visible on large screens */}
                   <div className="absolute hidden lg:flex left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full border-2 border-cyan-400 z-10 items-center justify-center">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center text-white">
                       {exp.type === "work" ? <FaBriefcase className="w-3 h-3" /> : <FaGraduationCap className="w-3 h-3" />}
@@ -334,10 +334,17 @@ export default function Experience() {
                   <div 
                     className={`w-full lg:w-1/2 flex ${isEven ? 'lg:pr-10 lg:justify-end' : 'lg:pl-10 lg:justify-start'}`}
                   >
+                    {/* Small screen timeline indicator */}
+                    <div className="flex lg:hidden items-center mr-3 sm:mr-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-500/20 border-2 border-cyan-400 flex items-center justify-center">
+                        {exp.type === "work" ? <FaBriefcase className="w-3 h-3 sm:w-4 sm:h-4" /> : <FaGraduationCap className="w-3 h-3 sm:w-4 sm:h-4" />}
+                      </div>
+                    </div>
+                    
                     <motion.div
                       whileHover={{ y: -5 }}
                       onClick={() => toggleExpand(expId)}
-                      className={`glass p-6 rounded-xl border transition-all duration-300 w-full max-w-lg cursor-pointer ${
+                      className={`glass p-4 sm:p-6 rounded-xl border transition-all duration-300 w-full max-w-lg cursor-pointer ${
                         isExpanded 
                           ? 'border-cyan-500/50 shadow-lg shadow-cyan-500/10' 
                           : 'border-white/5 hover:border-cyan-500/30'
@@ -345,36 +352,36 @@ export default function Experience() {
                     >
                       {/* Featured badge */}
                       {exp.featured && (
-                        <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xs px-2.5 py-1 rounded-full flex items-center gap-1">
-                          <FaStar className="w-3 h-3" />
+                        <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-[10px] sm:text-xs px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full flex items-center gap-1">
+                          <FaStar className="w-2 h-2 sm:w-3 sm:h-3" />
                           <span>Featured</span>
                         </div>
                       )}
                       
                       {/* Header */}
-                      <div className="mb-4">
-                        <h3 className="text-xl font-semibold mb-1">{exp.title}</h3>
-                        <div className="text-lg font-medium text-cyan-400">{exp.company}</div>
+                      <div className="mb-3 sm:mb-4">
+                        <h3 className="text-base sm:text-xl font-semibold mb-0.5 sm:mb-1">{exp.title}</h3>
+                        <div className="text-base sm:text-lg font-medium text-cyan-400">{exp.company}</div>
                       </div>
                       
                       {/* Meta information */}
-                      <div className="flex flex-wrap gap-4 mb-4 text-sm text-[var(--text-light)]/70">
+                      <div className="flex flex-wrap gap-2 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-[var(--text-light)]/70">
                         <div className="flex items-center gap-1">
-                          <FaCalendarAlt className="text-blue-400" />
+                          <FaCalendarAlt className="text-blue-400 w-3 h-3 sm:w-auto sm:h-auto" />
                           <span>{exp.period}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <FaMapMarkerAlt className="text-purple-400" />
+                          <FaMapMarkerAlt className="text-purple-400 w-3 h-3 sm:w-auto sm:h-auto" />
                           <span>{exp.location}</span>
                         </div>
                       </div>
                       
                       {/* Technologies */}
-                      <div className="flex gap-3 mb-4">
+                      <div className="flex gap-2 sm:gap-3 mb-3 sm:mb-4">
                         {exp.technologies?.map((tech, i) => (
                           <div 
                             key={i}
-                            className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500/10 to-blue-500/10 flex items-center justify-center text-cyan-400"
+                            className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-cyan-500/10 to-blue-500/10 flex items-center justify-center text-cyan-400"
                           >
                             {tech.icon}
                           </div>
@@ -382,11 +389,11 @@ export default function Experience() {
                       </div>
                       
                       {/* Skills */}
-                      <div className="flex flex-wrap gap-1.5 mb-4">
+                      <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3 sm:mb-4">
                         {exp.skills.map((skill, i) => (
                           <span 
                             key={i}
-                            className="px-2.5 py-0.5 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
+                            className="px-1.5 sm:px-2.5 py-0.5 text-[10px] sm:text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
                           >
                             {skill}
                           </span>
@@ -394,102 +401,76 @@ export default function Experience() {
                       </div>
                       
                       {/* Preview of responsibilities */}
-                      <div className="text-sm text-[var(--text-light)]/70 mb-2">
+                      <div className="text-xs sm:text-sm text-[var(--text-light)]/70 mb-1 sm:mb-2">
                         {exp.description[0]}{isExpanded ? '' : '...'}
                       </div>
                       
-                      {/* Expand/collapse button */}
+                      {/* Action button to expand */}
                       <div className="flex justify-end">
-                        <button 
-                          className="text-xs flex items-center gap-1 text-cyan-400 hover:text-cyan-300 transition-colors"
+                        <motion.button
+                          animate={{ rotate: isExpanded ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="text-sm text-cyan-400 flex items-center gap-1 mt-1"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleExpand(expId);
+                          }}
                         >
-                          {isExpanded ? 'Show less' : 'Read more'}
-                          <BsArrowRight className={`transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`} />
-                        </button>
+                          <span className="text-[10px] sm:text-xs">{isExpanded ? 'Show Less' : 'Show More'}</span>
+                          <BsArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300" />
+                        </motion.button>
                       </div>
                       
                       {/* Expanded content */}
-                      <AnimatePresence>
-                        {isExpanded && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="pt-4 mt-4 border-t border-white/10"
-                          >
-                            {/* Responsibilities */}
-                            <div className="mb-6">
-                              <h4 className="text-sm font-medium mb-3 text-cyan-400">Key Responsibilities</h4>
-                              <ul className="space-y-2">
-                                {exp.description.map((item, i) => (
-                                  <motion.li 
-                                    key={i}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="flex items-start gap-2 text-sm text-[var(--text-light)]/80"
-                                  >
-                                    <FaCheckCircle className="text-cyan-400 mt-1 flex-shrink-0" />
-                                    <span>{item}</span>
-                                  </motion.li>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-white/5"
+                        >
+                          {/* Description */}
+                          <h4 className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 text-cyan-400">Description</h4>
+                          <ul className="list-disc pl-4 text-xs sm:text-sm mb-3 sm:mb-4 space-y-1 sm:space-y-2 text-[var(--text-light)]/70">
+                            {exp.description.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                          
+                          {/* Achievements */}
+                          {exp.achievements && (
+                            <>
+                              <h4 className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 text-cyan-400">Key Achievements</h4>
+                              <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
+                                {exp.achievements.map((achievement, i) => (
+                                  <div key={i} className="glass p-2 rounded-lg text-center text-[10px] sm:text-xs border border-white/5">
+                                    <div className="text-cyan-400 font-bold mb-1">{achievement.title}</div>
+                                    <div className="text-[var(--text-light)]/60">{achievement.description}</div>
+                                  </div>
+                                ))}
+                              </div>
+                            </>
+                          )}
+                          
+                          {/* Certifications */}
+                          {exp.certifications && (
+                            <>
+                              <h4 className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 text-cyan-400">Certifications & Awards</h4>
+                              <ul className="mb-2 text-xs sm:text-sm">
+                                {exp.certifications.map((cert, i) => (
+                                  <li key={i} className="flex items-center gap-1.5 mb-1 text-[var(--text-light)]/80">
+                                    <FaCertificate className="text-yellow-400 w-3 h-3 sm:w-4 sm:h-4" />
+                                    {cert}
+                                  </li>
                                 ))}
                               </ul>
-                            </div>
-                            
-                            {/* Achievements */}
-                            {exp.achievements && (
-                              <div className="mb-6">
-                                <h4 className="text-sm font-medium mb-3 text-cyan-400 flex items-center gap-1.5">
-                                  <FaTrophy className="text-yellow-400" /> Key Accomplishments
-                                </h4>
-                                <div className="grid grid-cols-2 gap-2">
-                                  {exp.achievements.map((achievement, i) => (
-                                    <motion.div
-                                      key={i}
-                                      initial={{ opacity: 0, scale: 0.9 }}
-                                      animate={{ opacity: 1, scale: 1 }}
-                                      transition={{ delay: i * 0.2 }}
-                                      className="glass p-3 rounded-lg text-center"
-                                    >
-                                      <div className="text-lg font-bold text-cyan-400">{achievement.title}</div>
-                                      <div className="text-xs text-[var(--text-light)]/60">{achievement.description}</div>
-                                    </motion.div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                            
-                            {/* Certifications */}
-                            {exp.certifications && (
-                              <div>
-                                <h4 className="text-sm font-medium mb-3 text-cyan-400 flex items-center gap-1.5">
-                                  <FaCertificate className="text-yellow-400" /> Honors & Awards
-                                </h4>
-                                <ul className="space-y-1">
-                                  {exp.certifications.map((cert, i) => (
-                                    <motion.li
-                                      key={i}
-                                      initial={{ opacity: 0 }}
-                                      animate={{ opacity: 1 }}
-                                      transition={{ delay: i * 0.1 }}
-                                      className="flex items-center gap-2 text-sm text-[var(--text-light)]/70"
-                                    >
-                                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                                      {cert}
-                                    </motion.li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                            </>
+                          )}
+                        </motion.div>
+                      )}
                     </motion.div>
                   </div>
-                  
-                  {/* Spacer for alternating layout */}
-                  <div className="hidden lg:block w-1/2" />
                 </motion.div>
               );
             })}

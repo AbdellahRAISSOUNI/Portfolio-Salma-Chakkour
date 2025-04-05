@@ -48,8 +48,8 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed w-full z-50 transition-all duration-500 px-4 ${
-        scrolled ? "py-6" : "py-8"
+      className={`fixed w-full z-50 transition-all duration-500 px-3 sm:px-4 ${
+        scrolled ? "py-4 sm:py-6" : "py-6 sm:py-8"
       }`}
     >
       {/* Main navbar container - floating glass effect */}
@@ -57,7 +57,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`mx-auto max-w-3xl rounded-2xl overflow-hidden 
+        className={`mx-auto max-w-3xl rounded-xl sm:rounded-2xl overflow-hidden 
           ${scrolled 
             ? "bg-[var(--dark-surface)]/40 shadow-lg shadow-black/10" 
             : "bg-[var(--dark-surface)]/30 shadow-xl shadow-black/5"
@@ -80,10 +80,10 @@ export default function Navbar() {
           <div className="absolute -inset-1 bg-[conic-gradient(from_220deg_at_50%_50%,rgba(6,182,212,0.05)_0deg,transparent_45deg,transparent_315deg,rgba(6,182,212,0.1)_360deg)]"></div>
         </div>
 
-        <div className="container mx-auto py-3 px-3 relative z-10">
+        <div className="container mx-auto py-2 sm:py-3 px-2 sm:px-3 relative z-10">
           <div className="flex items-center justify-center">
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center justify-center space-x-6 mx-auto">
+            <nav className="hidden md:flex items-center justify-center space-x-4 lg:space-x-6 mx-auto">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.name}
@@ -118,7 +118,7 @@ export default function Navbar() {
             </nav>
 
             {/* Action Button - Now part of the main nav */}
-            <div className="hidden md:block ml-6">
+            <div className="hidden md:block ml-4 lg:ml-6">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -126,7 +126,7 @@ export default function Navbar() {
               >
                 <Link
                   href="#contact"
-                  className="group relative inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-cyan-500/10 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95"
+                  className="group relative inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 px-4 sm:px-5 py-1.5 sm:py-2 text-sm font-medium text-white shadow-lg shadow-cyan-500/10 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95"
                 >
                   <span className="relative z-10 flex items-center">
                     Hire Me
@@ -142,10 +142,10 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Toggle - Left aligned for mobile */}
-            <div className="md:hidden absolute left-3">
+            <div className="md:hidden absolute left-2 sm:left-3">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="relative z-10 p-2.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 text-white hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-300 border border-white/10 hover:border-white/20 hover:scale-110 active:scale-95"
+                className="relative z-10 p-2 sm:p-2.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 text-white hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-300 border border-white/10 hover:border-white/20 hover:scale-110 active:scale-95"
                 aria-label="Toggle mobile menu"
               >
                 <motion.div
@@ -153,9 +153,9 @@ export default function Navbar() {
                   transition={{ duration: 0.2 }}
                 >
                   {mobileMenuOpen ? (
-                    <FaTimes className="h-5 w-5" />
+                    <FaTimes className="h-4 w-4 sm:h-5 sm:w-5" />
                   ) : (
-                    <FaBars className="h-5 w-5" />
+                    <FaBars className="h-4 w-4 sm:h-5 sm:w-5" />
                   )}
                 </motion.div>
               </button>
@@ -172,7 +172,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden mt-3 overflow-hidden relative z-20 mx-auto max-w-3xl rounded-2xl"
+            className="md:hidden mt-2 sm:mt-3 overflow-hidden relative z-20 mx-auto max-w-3xl rounded-xl sm:rounded-2xl"
           >
             {/* Mobile menu glass effect */}
             <div className="absolute inset-0 bg-[var(--dark-surface)]/60 backdrop-blur-3xl backdrop-saturate-200 shadow-2xl border border-white/10"></div>
@@ -184,8 +184,8 @@ export default function Navbar() {
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,182,212,0.1),transparent_50%)]"></div>
             </div>
             
-            <div className="px-6 py-6 relative z-10">
-              <nav className="flex flex-col space-y-2">
+            <div className="px-4 sm:px-6 py-4 sm:py-6 relative z-10">
+              <nav className="flex flex-col space-y-1.5 sm:space-y-2">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
@@ -196,7 +196,7 @@ export default function Navbar() {
                     <Link
                       href={link.path}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
+                      className={`block px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 ${
                         activeSection === link.path.substring(1)
                           ? "bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-white border-l-2 border-cyan-400"
                           : "text-[var(--text-light)]/80 hover:bg-white/10 hover:text-white border-l-2 border-transparent hover:border-cyan-400/50 hover:translate-x-1"
@@ -207,15 +207,15 @@ export default function Navbar() {
                   </motion.div>
                 ))}
                 
-                <div className="pt-4 mt-2 border-t border-white/10">
+                <div className="pt-3 sm:pt-4 mt-1.5 sm:mt-2 border-t border-white/10">
                   <Link
                     href="#contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="group relative flex items-center justify-center w-full gap-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-base font-medium text-white transition-all duration-300 overflow-hidden shadow-lg shadow-cyan-500/10 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group relative flex items-center justify-center w-full gap-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-white transition-all duration-300 overflow-hidden shadow-lg shadow-cyan-500/10 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <span className="relative z-10 flex items-center">
                       Hire Me
-                      <FiArrowRight className="ml-2 text-white transition-transform duration-300 group-hover:translate-x-1" />
+                      <FiArrowRight className="ml-1.5 sm:ml-2 text-white transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
                     
                     {/* Hover effect */}

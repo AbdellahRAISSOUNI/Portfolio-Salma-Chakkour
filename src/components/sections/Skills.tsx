@@ -203,7 +203,7 @@ export default function Skills() {
   return (
     <section 
       id="skills" 
-      className="py-20 md:py-28 section-bg light-top-right light-bottom-right relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-28 section-bg light-top-right light-bottom-right relative overflow-hidden"
       ref={containerRef}
     >
       {/* Animated background elements */}
@@ -259,14 +259,14 @@ export default function Skills() {
         />
       </div>
 
-      <div className="section-content container mx-auto px-6 relative z-10">
-        <div className="mb-12 md:mb-16 text-center">
+      <div className="section-content container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-8 sm:mb-12 md:mb-16 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
           >
             Technical <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 inline-block text-transparent bg-clip-text">Arsenal</span>
           </motion.h2>
@@ -275,7 +275,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, width: "120px" }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="h-1.5 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto mb-8"
+            className="h-1.5 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto mb-6 sm:mb-8"
           ></motion.div>
           
           <motion.p
@@ -283,20 +283,20 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-3xl mx-auto text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed"
+            className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed"
           >
             An extensive toolkit of modern quality engineering technologies, expertly <span className="text-cyan-400 font-medium">orchestrated</span> to deliver robust, automated testing solutions.
           </motion.p>
         </div>
         
-        {/* Category navigation */}
-        <div className="mb-12">
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+        {/* Category navigation - scrollable on mobile */}
+        <div className="mb-8 sm:mb-12">
+          <div className="flex flex-nowrap justify-start sm:justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 overflow-x-auto pb-3 sm:pb-0 hide-scrollbar">
             {skillCategories.map((category, index) => (
               <button
                 key={category.name}
                 onClick={() => setActiveCategory(index)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 whitespace-nowrap flex-shrink-0 ${
                   activeCategory === index 
                   ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/20" 
                   : "glass hover:bg-white/5"
@@ -305,7 +305,7 @@ export default function Skills() {
                 <span className={activeCategory === index ? "text-white" : "text-cyan-400"}>
                   {category.icon}
                 </span>
-                <span className="hidden md:inline">{category.name}</span>
+                <span>{category.name}</span>
               </button>
             ))}
           </div>
@@ -316,9 +316,9 @@ export default function Skills() {
             animate={{ opacity: 1, y: 0 }}
             key={activeCategory}
             transition={{ duration: 0.3 }}
-            className="text-center mb-8"
+            className="text-center mb-6 sm:mb-8"
           >
-            <p className="text-base text-[var(--text-light)]/70 max-w-3xl mx-auto">
+            <p className="text-xs sm:text-sm md:text-base text-[var(--text-light)]/70 max-w-3xl mx-auto">
               {skillCategories[activeCategory].description}
             </p>
           </motion.div>
@@ -330,7 +330,7 @@ export default function Skills() {
           animate={{ opacity: 1 }}
           key={activeCategory}
           transition={{ duration: 0.4 }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {skillCategories[activeCategory].skills.map((skill, index) => {
@@ -345,58 +345,48 @@ export default function Skills() {
                   variants={skillItemVariants}
                   onMouseEnter={() => setHoveredSkill(skill.name)}
                   onMouseLeave={() => setHoveredSkill(null)}
-                  className="glass p-5 rounded-xl border border-white/5 hover:border-cyan-500/20 transition-all duration-300 group"
+                  className="glass p-4 sm:p-6 rounded-xl border border-white/5 hover:border-cyan-500/20 transition-all duration-300 group"
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-                        {skill.icon}
-                      </div>
-                      <div>
-                        <div className="font-medium">{skill.name}</div>
-                        <div className="text-xs text-[var(--text-light)]/50 group-hover:text-cyan-400/80 transition-colors">
-                          {skillLevel.level}
+                  <div className="flex items-start gap-3 sm:gap-5">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[var(--dark-surface)]/60 flex-shrink-0 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+                      {skill.icon}
+                    </div>
+                    
+                    <div className="flex-grow">
+                      <div className="flex justify-between items-start mb-2 sm:mb-3">
+                        <div>
+                          <div className="font-semibold text-base sm:text-lg">{skill.name}</div>
+                          <div className="text-[10px] sm:text-xs text-[var(--text-light)]/50 group-hover:text-cyan-400/80 transition-colors">
+                            {skillLevel.level}
+                          </div>
+                        </div>
+                        <div className="text-xl sm:text-2xl font-bold text-right">
+                          <span className={`${
+                            skill.proficiency >= 90 ? "text-cyan-400" : 
+                            skill.proficiency >= 85 ? "text-blue-400" : 
+                            skill.proficiency >= 80 ? "text-blue-500" : 
+                            "text-blue-600"
+                          }`}>
+                            {skill.proficiency}%
+                          </span>
                         </div>
                       </div>
-                    </div>
-                    <div className="text-lg font-bold bg-gradient-to-r from-cyan-400 to-blue-500 inline-block text-transparent bg-clip-text">
-                      {skill.proficiency}%
-                    </div>
-                  </div>
-                  
-                  <div className="relative h-3 bg-[var(--dark-surface)]/60 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="absolute inset-0 h-full rounded-full"
-                      style={{
-                        background: `linear-gradient(to right, var(--cyan-400), var(--blue-500)${hoveredSkill === skill.name ? ', var(--purple-500)' : ''})`
-                      }}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.proficiency}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.15 + index * 0.1 }}
-                    />
                     
-                    {/* Highlight marks on the progress bar */}
-                    {[25, 50, 75].map(mark => (
-                      <div 
-                        key={mark}
-                        className="absolute h-full w-px bg-white/10 top-0"
-                        style={{ left: `${mark}%` }}
-                      />
-                    ))}
-                    
-                    {/* Animated pulse when hovered */}
-                    {hoveredSkill === skill.name && (
-                      <motion.div
-                        className="absolute inset-0 bg-white/10"
-                        animate={{ opacity: [0, 0.5, 0] }}
-                        transition={{ 
-                          duration: 1.5, 
-                          repeat: Infinity,
-                          repeatType: "loop" 
-                        }}
-                      />
-                    )}
+                      <div className="relative h-1.5 sm:h-2 bg-[var(--dark-surface)]/60 rounded-full overflow-hidden">
+                        <motion.div 
+                          className={`absolute inset-0 h-full rounded-full ${
+                            skill.proficiency >= 90 ? "bg-gradient-to-r from-cyan-400 to-blue-500" :
+                            skill.proficiency >= 85 ? "bg-gradient-to-r from-blue-400 to-blue-500" :
+                            skill.proficiency >= 80 ? "bg-gradient-to-r from-blue-500 to-blue-600" :
+                            "bg-gradient-to-r from-cyan-500 to-blue-500"
+                          }`}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.proficiency}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.15 + index * 0.1 }}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               );
@@ -404,19 +394,19 @@ export default function Skills() {
           </div>
         </motion.div>
         
-        {/* Testing specializations */}
-        <div className="mb-16">
+        {/* Testing specializations - improve mobile grid */}
+        <div className="mb-12 sm:mb-16">
           <motion.h3 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-semibold mb-8 text-center"
+            className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center"
           >
             Testing <span className="text-cyan-400">Specializations</span>
           </motion.h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {testingTypes.map((type, index) => (
               <motion.div
                 key={type.name}
@@ -424,17 +414,17 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`glass p-4 rounded-xl border cursor-pointer transition-all duration-300 flex flex-col items-center text-center ${
+                className={`glass p-3 sm:p-4 rounded-xl border cursor-pointer transition-all duration-300 flex flex-col items-center text-center ${
                   selectedTestingType === index 
                     ? "border-cyan-500/50 bg-gradient-to-b from-cyan-500/10 to-transparent shadow-lg shadow-cyan-500/5" 
                     : "border-white/5 hover:border-white/20"
                 }`}
                 onClick={() => setSelectedTestingType(selectedTestingType === index ? null : index)}
               >
-                <div className={`mb-3 transform transition-transform duration-300 ${selectedTestingType === index ? "scale-110" : "group-hover:scale-110"}`}>
+                <div className={`mb-2 sm:mb-3 transform transition-transform duration-300 ${selectedTestingType === index ? "scale-110" : "group-hover:scale-110"}`}>
                   {type.icon}
                 </div>
-                <h4 className="font-medium text-sm">{type.name}</h4>
+                <h4 className="font-medium text-xs sm:text-sm">{type.name}</h4>
               </motion.div>
             ))}
           </div>

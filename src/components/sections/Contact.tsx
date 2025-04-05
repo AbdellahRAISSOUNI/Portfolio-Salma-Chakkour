@@ -64,7 +64,7 @@ export default function Contact() {
     <section 
       id="contact" 
       ref={containerRef}
-      className="py-20 md:py-32 section-bg light-bottom-left relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-32 section-bg light-bottom-left relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -107,14 +107,14 @@ export default function Contact() {
         )}
       </div>
 
-      <div className="section-content container mx-auto px-6 relative z-10">
-        <div className="mb-12 md:mb-16 text-center">
+      <div className="section-content container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-8 sm:mb-12 md:mb-16 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
           >
             Let&apos;s <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 inline-block text-transparent bg-clip-text">Connect</span>
           </motion.h2>
@@ -123,7 +123,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, width: "120px" }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="h-1.5 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto mb-8"
+            className="h-1.5 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto mb-6 sm:mb-8"
           ></motion.div>
           
           <motion.p
@@ -131,13 +131,13 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-2xl mx-auto text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed"
+            className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed"
           >
             Ready to elevate your project with expert QA automation? Reach out through any of the channels below.
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {/* Left Column */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -146,8 +146,8 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="lg:col-span-6"
           >
-            <div className="glass p-8 rounded-xl border border-white/5 hover:border-cyan-500/20 transition-all duration-300 shadow-lg h-full">
-              <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
+            <div className="glass p-5 sm:p-6 md:p-8 rounded-xl border border-white/5 hover:border-cyan-500/20 transition-all duration-300 shadow-lg h-full">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-5 sm:mb-8 flex items-center gap-2">
                 <FaCheckCircle className="text-cyan-400" /> 
                 <span>Get in Touch</span>
               </h3>
@@ -158,22 +158,22 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="glass p-4 rounded-xl border border-white/5 mb-8 overflow-hidden"
+                className="glass p-3 sm:p-4 rounded-xl border border-white/5 mb-6 sm:mb-8 overflow-hidden"
               >
-                <div className="flex items-center gap-2 mb-3 border-b border-white/10 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <div className="flex items-center gap-2 mb-2 sm:mb-3 border-b border-white/10 pb-2">
+                  <div className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-red-400"></div>
+                  <div className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-yellow-400"></div>
+                  <div className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-green-400"></div>
                   <div className="text-xs text-white/60 ml-2">terminal</div>
                 </div>
-                <div className="font-mono text-sm text-cyan-400/90 whitespace-pre-line">
+                <div className="font-mono text-xs sm:text-sm text-cyan-400/90 whitespace-pre-line">
                   {terminalText}
                   {cursorVisible && <span className="text-cyan-400">_</span>}
                 </div>
               </motion.div>
               
               {/* Contact details with icons */}
-              <div className="space-y-6 mb-8">
+              <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
                 {contactDetails.map((item, index) => (
                   <motion.div 
                     key={item.title}
@@ -182,22 +182,22 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     whileHover={{ x: 5 }}
-                    className="flex items-center gap-4 group"
+                    className="flex items-center gap-3 sm:gap-4 group"
                   >
-                    <div className="w-12 h-12 rounded-lg glass flex-shrink-0 flex items-center justify-center border border-white/5 group-hover:border-cyan-500/30 transition-colors duration-300 shadow-md">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg glass flex-shrink-0 flex items-center justify-center border border-white/5 group-hover:border-cyan-500/30 transition-colors duration-300 shadow-md">
                       {item.icon}
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-[var(--text-light)]/60 mb-1">{item.title}</h4>
+                      <h4 className="text-xs sm:text-sm font-medium text-[var(--text-light)]/60 mb-0.5 sm:mb-1">{item.title}</h4>
                       {item.href ? (
                         <a 
                           href={item.href} 
-                          className="text-base text-[var(--text-light)]/90 hover:text-cyan-400 transition-colors group-hover:text-cyan-400"
+                          className="text-sm sm:text-base text-[var(--text-light)]/90 hover:text-cyan-400 transition-colors group-hover:text-cyan-400"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-base text-[var(--text-light)]/90">{item.value}</p>
+                        <p className="text-sm sm:text-base text-[var(--text-light)]/90">{item.value}</p>
                       )}
                     </div>
                   </motion.div>
@@ -211,8 +211,8 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <h4 className="text-lg font-medium mb-4">Connect Online</h4>
-                <div className="flex gap-3">
+                <h4 className="text-base sm:text-lg font-medium mb-3 sm:mb-4">Connect Online</h4>
+                <div className="flex gap-2 sm:gap-3">
                   {socialLinks.map((social, index) => (
                     <motion.a 
                       key={social.label}
@@ -224,10 +224,10 @@ export default function Contact() {
                       href={social.href} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className={`w-12 h-12 rounded-full glass flex items-center justify-center text-[var(--text-light)]/70 border border-white/5 hover:text-white ${social.color} hover:border-transparent transition-all duration-300 shadow-md`}
+                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full glass flex items-center justify-center text-[var(--text-light)]/70 border border-white/5 hover:text-white ${social.color} hover:border-transparent transition-all duration-300 shadow-md`}
                       aria-label={social.label}
                     >
-                      <span className="text-lg">{social.icon}</span>
+                      <span className="text-base sm:text-lg">{social.icon}</span>
                     </motion.a>
                   ))}
                 </div>
@@ -243,8 +243,8 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="lg:col-span-6"
           >
-            <div className="glass p-8 rounded-xl border border-white/5 hover:border-cyan-500/20 transition-all duration-300 shadow-lg h-full">
-              <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
+            <div className="glass p-5 sm:p-6 md:p-8 rounded-xl border border-white/5 hover:border-cyan-500/20 transition-all duration-300 shadow-lg h-full">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-5 sm:mb-8 flex items-center gap-2">
                 <TbTestPipe className="text-cyan-400" />
                 <span>Expertise Highlight</span>
               </h3>

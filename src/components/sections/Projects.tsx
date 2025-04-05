@@ -201,7 +201,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 md:py-32 section-bg light-bottom-right relative overflow-hidden" ref={containerRef}>
+    <section id="projects" className="py-16 sm:py-20 md:py-32 section-bg light-bottom-right relative overflow-hidden" ref={containerRef}>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg className="absolute w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
@@ -240,14 +240,14 @@ export default function Projects() {
         ))}
       </div>
 
-      <div className="section-content container mx-auto px-6 relative z-10">
-        <div className="mb-12 md:mb-16 text-center">
+      <div className="section-content container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="mb-10 sm:mb-12 md:mb-16 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
           >
             Featured <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 inline-block text-transparent bg-clip-text">Projects</span>
           </motion.h2>
@@ -264,20 +264,20 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-3xl mx-auto text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed"
+            className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[var(--text-light)]/80 leading-relaxed"
           >
             A showcase of test automation and quality engineering systems I've designed and implemented, 
             delivering measurable value through enhanced testing efficiency and quality assurance.
           </motion.p>
         </div>
         
-        {/* Category filters */}
+        {/* Category filters - Scrollable on mobile */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-nowrap justify-start sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 overflow-x-auto pb-3 sm:pb-0 hide-scrollbar"
         >
           {categories.map(category => (
             <button
@@ -286,7 +286,7 @@ export default function Projects() {
                 setActiveCardIndex(null);
                 setActiveCategory(category);
               }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${ 
+              className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${ 
                 activeCategory === category 
                   ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/20" 
                   : "glass hover:bg-white/5 hover:text-cyan-400"
@@ -305,7 +305,7 @@ export default function Projects() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           >
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -333,16 +333,16 @@ export default function Projects() {
                   }}
                 />
                 
-                <div className="p-6 flex-grow">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold">{project.title}</h3>
-                    <span className="text-3xl">{project.icon}</span>
+                <div className="p-4 sm:p-6 flex-grow">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <h3 className="text-lg sm:text-xl font-semibold">{project.title}</h3>
+                    <span className="text-2xl sm:text-3xl">{project.icon}</span>
                   </div>
                   
-                  <p className="text-sm text-[var(--text-light)]/70 mb-5 leading-relaxed">{project.description}</p>
+                  <p className="text-xs sm:text-sm text-[var(--text-light)]/70 mb-4 sm:mb-5 leading-relaxed">{project.description}</p>
                   
                   {/* Project metrics */}
-                  <div className="grid grid-cols-2 gap-2 mb-5">
+                  <div className="grid grid-cols-2 gap-2 mb-4 sm:mb-5">
                     {project.metrics.map((metric, i) => (
                       <div key={i} className="glass p-2 rounded text-center text-xs">
                         <div className="text-cyan-400 font-bold mb-1">{metric.value}</div>
@@ -351,11 +351,11 @@ export default function Projects() {
                     ))}
                   </div>
                   
-                  <div className="flex flex-wrap gap-2 mb-2">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-1 sm:mb-2">
                     {project.tags.map(tag => (
                       <span 
                         key={tag} 
-                        className="px-2.5 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium"
+                        className="px-1.5 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium"
                       >
                         {tag}
                       </span>
@@ -364,17 +364,17 @@ export default function Projects() {
                 </div>
                 
                 {/* Project card footer */}
-                <div className="border-t border-white/5 p-4 bg-[var(--dark-surface)]/20">
+                <div className="border-t border-white/5 p-3 sm:p-4 bg-[var(--dark-surface)]/20">
                   <div className="flex justify-between items-center">
                     <a 
                       href={project.links.code} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-1.5 text-sm text-[var(--text-light)]/80 hover:text-cyan-400 transition-colors"
+                      className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-[var(--text-light)]/80 hover:text-cyan-400 transition-colors"
                       aria-label={`View code for ${project.title}`}
                     >
-                      <FaGithub className="h-4 w-4" />
+                      <FaGithub className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span>Repository</span>
                     </a>
                     <a 
@@ -382,10 +382,10 @@ export default function Projects() {
                       target="_blank" 
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-1.5 text-sm text-[var(--text-light)]/80 hover:text-cyan-400 transition-colors"
+                      className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-[var(--text-light)]/80 hover:text-cyan-400 transition-colors"
                       aria-label={`View demo for ${project.title}`}
                     >
-                      <FaExternalLinkAlt className="h-3.5 w-3.5" />
+                      <FaExternalLinkAlt className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5" />
                       <span>Live Demo</span>
                     </a>
                   </div>
@@ -429,19 +429,19 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-16 text-center"
+          className="mt-10 sm:mt-12 md:mt-16 text-center"
         >
           <a 
             href="https://github.com/salma-chakkour"
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-medium shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm sm:text-base font-medium shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
           >
-            <FaGithub className="h-5 w-5" />
+            <FaGithub className="h-4 w-4 sm:h-5 sm:w-5" />
             Explore More on GitHub
           </a>
         </motion.div>
       </div>
     </section>
   );
-} 
+}

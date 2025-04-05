@@ -25,7 +25,7 @@ export default function Footer() {
   ];
   
   return (
-    <footer className="bg-[var(--dark-surface)]/60 backdrop-blur-md pt-16 pb-8 section-bg light-bottom-right relative overflow-hidden">
+    <footer className="bg-[var(--dark-surface)]/60 backdrop-blur-md pt-12 sm:pt-16 pb-6 sm:pb-8 section-bg light-bottom-right relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg className="absolute w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
@@ -80,27 +80,27 @@ export default function Footer() {
         </motion.div>
       </div>
       
-      <div className="section-content container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
+      <div className="section-content container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-8 sm:mb-12">
           {/* Logo and description */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-2 lg:col-span-2"
+            className="sm:col-span-2"
           >
             <Link 
               href="/" 
-              className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 inline-block text-transparent bg-clip-text mb-5 hover:opacity-90 transition-all duration-300 transform hover:translate-x-1"
+              className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 inline-block text-transparent bg-clip-text mb-3 sm:mb-5 hover:opacity-90 transition-all duration-300 transform hover:translate-x-1"
             >
               Salma Chakkour
             </Link>
-            <p className="text-[var(--text-light)]/70 mb-6 max-w-md text-sm leading-relaxed">
+            <p className="text-[var(--text-light)]/70 mb-4 sm:mb-6 max-w-md text-xs sm:text-sm leading-relaxed">
               Dedicated Automation QA Engineer crafting high-quality software through robust testing strategies. 
               Specializing in end-to-end test automation, CI/CD integration, and performance testing.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3 sm:gap-4">
               {socialLinks.map((social, index) => (
                 <motion.a 
                   key={social.label}
@@ -112,10 +112,10 @@ export default function Footer() {
                   href={social.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-full glass flex items-center justify-center text-[var(--text-light)]/70 ${social.color} border border-white/5 hover:border-white/20 transition-all duration-300 shadow-md`}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full glass flex items-center justify-center text-[var(--text-light)]/70 ${social.color} border border-white/5 hover:border-white/20 transition-all duration-300 shadow-md`}
                   aria-label={social.label}
                 >
-                  <span className="text-lg">{social.icon}</span>
+                  <span className="text-base sm:text-lg">{social.icon}</span>
                 </motion.a>
               ))}
             </div>
@@ -129,11 +129,11 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:justify-self-center"
           >
-            <h3 className="text-base font-semibold mb-5 text-[var(--text-light)]/90 uppercase tracking-wider flex items-center gap-2">
-              <span className="h-4 w-1 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></span>
+            <h3 className="text-sm sm:text-base font-semibold mb-3 sm:mb-5 text-[var(--text-light)]/90 uppercase tracking-wider flex items-center gap-2">
+              <span className="h-3 sm:h-4 w-1 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></span>
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((item, index) => (
                 <motion.li 
                   key={item.name}
@@ -145,7 +145,7 @@ export default function Footer() {
                 >
                   <Link 
                     href={item.path} 
-                    className="text-sm text-[var(--text-light)]/70 hover:text-cyan-400 transition-colors duration-300 flex items-center gap-1.5"
+                    className="text-xs sm:text-sm text-[var(--text-light)]/70 hover:text-cyan-400 transition-colors duration-300 flex items-center gap-1.5"
                   >
                     <span className="h-1 w-1 bg-cyan-400/50 rounded-full"></span>
                     {item.name}
@@ -163,11 +163,11 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:justify-self-start"
           >
-            <h3 className="text-base font-semibold mb-5 text-[var(--text-light)]/90 uppercase tracking-wider flex items-center gap-2">
-              <span className="h-4 w-1 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></span>
+            <h3 className="text-sm sm:text-base font-semibold mb-3 sm:mb-5 text-[var(--text-light)]/90 uppercase tracking-wider flex items-center gap-2">
+              <span className="h-3 sm:h-4 w-1 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></span>
               Contact
             </h3>
-            <ul className="space-y-3 text-sm text-[var(--text-light)]/70">
+            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-[var(--text-light)]/70">
               <motion.li 
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -217,7 +217,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="pt-8 border-t border-white/10 text-center text-xs text-[var(--text-light)]/60"
+          className="pt-6 sm:pt-8 border-t border-white/10 text-center text-[10px] sm:text-xs text-[var(--text-light)]/60"
         >
           <p className="mb-2">
             © {currentYear} Salma Chakkour. All rights reserved.

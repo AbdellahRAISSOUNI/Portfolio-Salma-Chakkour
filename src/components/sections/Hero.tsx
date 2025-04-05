@@ -98,7 +98,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center section-bg light-top-right light-purple relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center section-bg light-top-right light-purple relative overflow-hidden px-4 sm:px-6"
     >
       {/* Floating particles - only rendered client-side */}
       {isMounted && (
@@ -155,7 +155,7 @@ export default function Hero() {
         }}
       />
       
-      <div className="section-content container mx-auto px-6 py-24 md:py-28 relative z-10">
+      <div className="section-content container mx-auto px-0 sm:px-6 py-16 md:py-24 relative z-10">
         {/* Animated geometric shapes */}
         <div className="absolute top-16 right-20 hidden lg:block">
           <motion.div
@@ -185,7 +185,7 @@ export default function Hero() {
           />
         </div>
         
-        <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-center justify-between">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center justify-between">
           {/* Text Content with Enhanced Animations */}
           <motion.div 
             variants={containerVariants}
@@ -216,7 +216,7 @@ export default function Hero() {
             <motion.div className="relative mt-2 mb-4 inline-block">
               <motion.h1 
                 variants={itemVariants}
-                className="text-6xl md:text-8xl font-extrabold relative inline-block tracking-tight"
+                className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold relative inline-block tracking-tight"
               >
                 <motion.div
                   className="relative"
@@ -237,7 +237,7 @@ export default function Hero() {
                   <motion.span
                     className="absolute -bottom-3 left-0 h-2 w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full"
                     initial={{ width: 0, opacity: 0.3 }}
-                    animate={{ width: "100%", opacity: 0.7 }}
+                    animate={{ width: '100%', opacity: 0.7 }}
                     transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
                   />
                 </motion.div>
@@ -290,11 +290,11 @@ export default function Hero() {
             </motion.div>
             
             <motion.div
-              className="relative inline-block mb-7"
+              className="relative inline-block mb-5 sm:mb-7"
               variants={itemVariants}
             >
               <div className="h-px w-12 bg-gradient-to-r from-cyan-400 to-purple-600 mb-3 hidden md:block"></div>
-              <h3 className="text-xl md:text-2xl font-medium text-[var(--text-light)]/90 tracking-wide">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-[var(--text-light)]/90 tracking-wide">
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -317,14 +317,14 @@ export default function Hero() {
               <motion.span
                 className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-600"
                 initial={{ width: 0 }}
-                animate={{ width: "100%" }}
+                animate={{ width: '100%' }}
                 transition={{ duration: 1.5, delay: 1.5, ease: "easeInOut" }}
               />
             </motion.div>
             
             <motion.p 
               variants={itemVariants}
-              className="text-base md:text-lg mb-10 max-w-xl mx-auto md:mx-0 text-[var(--text-light)]/80 leading-relaxed font-light"
+              className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 md:mb-10 max-w-xl mx-auto md:mx-0 text-[var(--text-light)]/80 leading-relaxed font-light"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
@@ -343,7 +343,7 @@ export default function Hero() {
                   <motion.span
                     className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
                     initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
+                    animate={{ width: '100%' }}
                     transition={{ duration: 0.8, delay: 2 }}
                   />
                 </motion.span>. Expert in building robust, scalable test frameworks.
@@ -352,7 +352,7 @@ export default function Hero() {
             
             <motion.div 
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -408,7 +408,7 @@ export default function Hero() {
             
             <motion.div 
               variants={itemVariants}
-              className="flex gap-4 mt-10 justify-center md:justify-start"
+              className="flex gap-4 mt-6 sm:mt-8 md:mt-10 justify-center md:justify-start"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.8 }}
@@ -445,12 +445,12 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="w-full md:w-1/2 flex justify-center md:justify-end mt-10 md:mt-0 relative"
+            className="w-full md:w-1/2 flex justify-center md:justify-end mt-6 md:mt-0 relative"
             style={{ perspective: 1000 }}
             onMouseEnter={() => setCursorVariant("sphere")}
             onMouseLeave={() => setCursorVariant("default")}
           >
-            {/* Animated code blocks in background */}
+            {/* Animated code blocks in background - hide on small mobile */}
             {isMounted && (
               <>
                 <motion.div
@@ -468,12 +468,12 @@ export default function Hero() {
                   <pre className="text-xs text-cyan-400 font-mono">
                     <code>
                       <div className="flex flex-col gap-1">
-                        <span><span className="text-purple-400">describe</span>(<span className="text-green-300">'Authentication'</span>, <span className="text-blue-300">() =></span> {'{'}</span>
+                        <span><span className="text-purple-400">describe</span>(<span className="text-green-300">'Authentication'</span>, <span className="text-blue-300">{'() => '}</span> {'{'}</span>
                         <motion.span
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 1.5, duration: 0.5 }}
-                        >  <span className="text-purple-400">it</span>(<span className="text-green-300">'should login successfully'</span>, <span className="text-blue-300">async () =></span> {'{'}</motion.span>
+                        >  <span className="text-purple-400">it</span>(<span className="text-green-300">'should login successfully'</span>, <span className="text-blue-300">{'async () => '}</span> {'{'}</motion.span>
                         <motion.span
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -481,7 +481,7 @@ export default function Hero() {
                         >    <span className="text-orange-300">await</span> page.fill(<span className="text-green-300">'#email'</span>, <span className="text-green-300">'user@test.com'</span>);</motion.span>
                         <motion.div
                           initial={{ width: 0 }}
-                          animate={{ width: "100%" }}
+                          animate={{ width: '100%' }}
                           transition={{ duration: 1.5, delay: 2.2, repeat: Infinity, repeatDelay: 5 }}
                           className="h-full"
                         >
@@ -526,7 +526,7 @@ export default function Hero() {
                         >  <span className="text-purple-400">expect</span>(res.<span className="text-cyan-300">status</span>).<span className="text-yellow-300">to.equal</span>(200);</motion.span>
                         <motion.div
                           initial={{ width: 0 }}
-                          animate={{ width: "100%" }}
+                          animate={{ width: '100%' }}
                           transition={{ duration: 1.5, delay: 2.4, repeat: Infinity, repeatDelay: 5 }}
                           className="h-full"
                         >
@@ -545,7 +545,7 @@ export default function Hero() {
 
             <motion.div
               ref={sphereRef}
-              className="relative w-72 h-72 md:w-96 md:h-96 group cursor-pointer"
+              className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 group cursor-pointer"
               animate={{
                 rotateY: parallax.x,
                 rotateX: -parallax.y,
@@ -828,7 +828,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.8 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
       >
         <motion.div 
           className="flex flex-col items-center cursor-pointer"
